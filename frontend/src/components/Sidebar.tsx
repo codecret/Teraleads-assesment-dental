@@ -1,7 +1,14 @@
 import React from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
-import { Users, MessageSquare, PlusCircle, List, LogOut } from "lucide-react";
+import {
+  Users,
+  MessageSquare,
+  PlusCircle,
+  List,
+  LogOut,
+  LayoutDashboard,
+} from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 
 const Sidebar: React.FC = () => {
@@ -20,11 +27,11 @@ const Sidebar: React.FC = () => {
   };
 
   const navItems = [
-    // {
-    //   title: "Dashboard",
-    //   href: "/dashboard",
-    //   icon: <LayoutDashboard className="w-5 h-5" />,
-    // },
+    {
+      title: "Dashboard",
+      href: "/",
+      icon: <LayoutDashboard className="w-5 h-5" />,
+    },
     {
       title: "Patients",
       href: "/patients",
