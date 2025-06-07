@@ -1,0 +1,33 @@
+from fastapi import APIRouter, Depends, HTTPException, status
+from sqlalchemy.orm import Session
+from app.db.session import get_db
+from app.schemas.user import UserCreate, UserLogin, User, Token
+from app.services.auth import create_user, login_user
+
+router = APIRouter()
+
+@router.post("/register")
+def register(user: UserCreate, db: Session = Depends(get_db)):
+    """
+    Register a new user.
+    """
+    return create_user(db=db, user=user)
+
+@router.post("/login")
+def login(user_data: UserLogin, db: Session = Depends(get_db)):
+    """
+    Login user and return JWT token.
+    """
+    return login_user(db=db, user_data=user_data) 
+def register(user: UserCreate, db: Session = Depends(get_db)):
+    """
+    Register a new user.
+    """
+    return create_user(db=db, user=user)
+
+@router.post("/login")
+def login(user_data: UserLogin, db: Session = Depends(get_db)):
+    """
+    Login user and return JWT token.
+    """
+    return login_user(db=db, user_data=user_data) 
